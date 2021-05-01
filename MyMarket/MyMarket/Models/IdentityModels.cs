@@ -20,6 +20,11 @@ namespace MyMarket.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<RefFood> RefFoods { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Market> Markets { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

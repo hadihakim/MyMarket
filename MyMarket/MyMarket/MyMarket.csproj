@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -112,12 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -170,14 +170,63 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarketsController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105010639121_InitialModel.cs" />
+    <Compile Include="Migrations\202105010639121_InitialModel.Designer.cs">
+      <DependentUpon>202105010639121_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010644412_AddRefFoodModel.cs" />
+    <Compile Include="Migrations\202105010644412_AddRefFoodModel.Designer.cs">
+      <DependentUpon>202105010644412_AddRefFoodModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010652360_AddFoodModel.cs" />
+    <Compile Include="Migrations\202105010652360_AddFoodModel.Designer.cs">
+      <DependentUpon>202105010652360_AddFoodModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010654221_MaxBarcode.cs" />
+    <Compile Include="Migrations\202105010654221_MaxBarcode.Designer.cs">
+      <DependentUpon>202105010654221_MaxBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010701274_AddStockModel.cs" />
+    <Compile Include="Migrations\202105010701274_AddStockModel.Designer.cs">
+      <DependentUpon>202105010701274_AddStockModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010709089_AddMarketModel.cs" />
+    <Compile Include="Migrations\202105010709089_AddMarketModel.Designer.cs">
+      <DependentUpon>202105010709089_AddMarketModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010711518_SeedRefFood.cs" />
+    <Compile Include="Migrations\202105010711518_SeedRefFood.Designer.cs">
+      <DependentUpon>202105010711518_SeedRefFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010719329_SeedFoodModel.cs" />
+    <Compile Include="Migrations\202105010719329_SeedFoodModel.Designer.cs">
+      <DependentUpon>202105010719329_SeedFoodModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010725377_SeedStockModel.cs" />
+    <Compile Include="Migrations\202105010725377_SeedStockModel.Designer.cs">
+      <DependentUpon>202105010725377_SeedStockModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105010731241_SeedMarketModel.cs" />
+    <Compile Include="Migrations\202105010731241_SeedMarketModel.Designer.cs">
+      <DependentUpon>202105010731241_SeedMarketModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\FoodsController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Market.cs" />
+    <Compile Include="Models\RefFood.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\MarketFoodViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -235,6 +284,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Foods\Create.cshtml" />
+    <Content Include="Views\Foods\Delete.cshtml" />
+    <Content Include="Views\Foods\Details.cshtml" />
+    <Content Include="Views\Foods\Edit.cshtml" />
+    <Content Include="Views\Foods\Index.cshtml" />
+    <Content Include="Views\Stocks\Create.cshtml" />
+    <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\Stocks\Details.cshtml" />
+    <Content Include="Views\Stocks\Edit.cshtml" />
+    <Content Include="Views\Stocks\Index.cshtml" />
+    <Content Include="Views\Markets\Create.cshtml" />
+    <Content Include="Views\Markets\Delete.cshtml" />
+    <Content Include="Views\Markets\Details.cshtml" />
+    <Content Include="Views\Markets\Edit.cshtml" />
+    <Content Include="Views\Markets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +315,38 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105010639121_InitialModel.resx">
+      <DependentUpon>202105010639121_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010644412_AddRefFoodModel.resx">
+      <DependentUpon>202105010644412_AddRefFoodModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010652360_AddFoodModel.resx">
+      <DependentUpon>202105010652360_AddFoodModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010654221_MaxBarcode.resx">
+      <DependentUpon>202105010654221_MaxBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010701274_AddStockModel.resx">
+      <DependentUpon>202105010701274_AddStockModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010709089_AddMarketModel.resx">
+      <DependentUpon>202105010709089_AddMarketModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010711518_SeedRefFood.resx">
+      <DependentUpon>202105010711518_SeedRefFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010719329_SeedFoodModel.resx">
+      <DependentUpon>202105010719329_SeedFoodModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010725377_SeedStockModel.resx">
+      <DependentUpon>202105010725377_SeedStockModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010731241_SeedMarketModel.resx">
+      <DependentUpon>202105010731241_SeedMarketModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
